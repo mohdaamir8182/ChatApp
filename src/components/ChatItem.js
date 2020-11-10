@@ -2,9 +2,9 @@ import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { AVATAR_ICON, BACKARROW_ICON, FAILED_ICON, GREYTICKS_ICON, SEEN_ICON, SENT_ICON } from '../Constants/images'
 
-const ChatItem = ({name , message , time , status}) => {
+const ChatItem = ({name , message , time , status, onPress}) => {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <View style={styles.innerContainer}>
                 <View style={styles.leftContainer}>
                     <View style={styles.avatarContainer}>

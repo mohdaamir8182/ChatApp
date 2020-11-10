@@ -10,6 +10,7 @@ import Settings from './src/screens/bottomTabs/Settings';
 import { CALL_ICON, CAMERA_ICON, CHATS_ICON, SETTINGS_ICON, STATUS_ICON } from './src/Constants/images';
 import BottomIcon from './src/components/BottomIcon';
 import { activeTintColor, inActiveTintColor, tabBgColor } from './src/Constants/colors';
+import OnetoOneChat from './src/screens/bottomTabs/OnetoOneChat';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,6 +21,7 @@ function MainStack() {
      headerMode = "none"
     >
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="OnetoOneChat" component={OnetoOneChat} />
     </Stack.Navigator>
   );
 }
@@ -57,9 +59,9 @@ function CallsStack() {
   function ChatssStack() {
     return (
       <Stack.Navigator
-        headerMode = "none"
+        headerMode = "none"initialRouteName="Chats"
       >
-        <Stack.Screen name="Chats" component={Chats} />
+        <Stack.Screen name="Chats" component={Chats}  />
       </Stack.Navigator>
     );
   }
@@ -74,11 +76,21 @@ function CallsStack() {
     );
   }
 
+  getTabBarVisibility = (route) => {
+    
+    if (route.name === 'OnetoOneChat') {
+      return false;
+    }
+  
+    return true;
+  }
+
   function BottomTabsNavigator() {
       return (
         <Tab.Navigator
           initialRouteName="Chats"
           screenOptions={({ route }) => ({
+            tabBarVisible: getTabBarVisibility(route),
             tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 

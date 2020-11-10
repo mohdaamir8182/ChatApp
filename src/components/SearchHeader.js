@@ -5,7 +5,7 @@ import { chatHeaderBgColor, tabBgColor } from '../Constants/colors'
 import { EDIT_ICON, SEARCH_ICON } from '../Constants/images'
 
 
-const ChatHeader = () => {
+const SearchHeader = () => {
     return (
         <View style={styles.container}>
             
@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ChatHeader
+export default SearchHeader

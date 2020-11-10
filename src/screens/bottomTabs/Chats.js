@@ -1,19 +1,28 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import { scale } from 'react-native-size-matters'
-import ChatHeader from '../../components/ChatHeader'
+import SearchHeader from '../../components/SearchHeader'
 import ChatItem from '../../components/ChatItem'
 import { chatBodyColor } from '../../Constants/colors'
 import {allChats} from '../../Constants/data'
+import { useNavigation } from '@react-navigation/native';
+
 
 const Chats = () => {
+
+    const navigation = useNavigation(); 
+
+    function onPress(){
+        navigation.navigate('OnetoOneChat')
+    }
+
     return (
         <ScrollView 
             contentContainerStyle={StyleSheet.container}
             showsVerticalScrollIndicator='false'
         >
 
-            <ChatHeader />
+            <SearchHeader />
 
             <View style={styles.chatBody}>
 
@@ -35,6 +44,7 @@ const Chats = () => {
                                 message = {item.message}
                                 time = {item.time}
                                 status = {item.status}
+                                onPress={onPress}
                             />
                         )
                     })
@@ -48,10 +58,11 @@ const Chats = () => {
 const styles = StyleSheet.create({
     container:{
         flexGrow: 1,
-        backgroundColor: chatBodyColor,
+        backgroundColor: 'white',
     },
     chatBody:{
-        flex: 1
+        flex: 1,
+        backgroundColor: 'white',
     },
     top:{
         height: 55,
