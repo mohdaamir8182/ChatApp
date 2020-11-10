@@ -77,7 +77,7 @@ function CallsStack() {
   function BottomTabsNavigator() {
       return (
         <Tab.Navigator
-        
+          initialRouteName="Chats"
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
             let iconName;

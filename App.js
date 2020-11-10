@@ -1,17 +1,21 @@
-import React from 'react';
-import {SafeAreaView,StatusBar} from 'react-native';
+import React, { Fragment } from 'react';
+import {StatusBar, View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { BottomTabsNavigator, MainStack } from './Routes';
-
-
+import { MainStack } from './Routes';
+import { useSafeAreaInsets, SafeAreaProvider,SafeAreaView } from 'react-native-safe-area-context';
+import { chatHeaderBgColor, tabBgColor } from './src/Constants/colors';
 
 function App() {
+
   return (
-    
-        <NavigationContainer>
-          <MainStack /> 
-        </NavigationContainer>
-      
+    <Fragment>
+      <SafeAreaView style={{ flex: 0, backgroundColor: chatHeaderBgColor }} />
+      <SafeAreaView style={{flex:1, backgroundColor: tabBgColor}}>
+            <NavigationContainer>
+              <MainStack /> 
+            </NavigationContainer>
+      </SafeAreaView>
+    </Fragment>
   );
 };
 

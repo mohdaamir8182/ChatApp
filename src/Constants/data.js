@@ -1,0 +1,72 @@
+export const allChats = [
+    {
+        id: 1,
+        name: "Steve Rodriguez ",
+        message: "There is lot to talk",
+        time: "4:16 PM",
+        status: 'delivered',
+    },
+    {
+        id: 2,
+        name: "Miles Thompson",
+        message: "I got you bro 💪🏽😎",
+        time: "6:10 PM",
+        status: 'sent',
+    },
+    {
+        id: 3,
+        name: "Amanda James",
+        message: "cant wait for tomorrow ☺️😍😍",
+        time: "5:15 AM",
+        status: 'seen',
+    },
+    {
+        id: 4,
+        name: "Weekend Plan",
+        message: "lets meet up",
+        time: "11:10 AM",
+        status: 'delivered',
+    },
+    {
+        id: 5,
+        name: "Grace Teresa",
+        message: "can you call?? 😕",
+        time: "3:20 PM",
+        status: 'sent',
+    },
+    {
+        id: 6,
+        name: "Steve Rodriguez ",
+        message: "There is lot to talk",
+        time: "4:16 PM",
+        status: 'seen',
+    },
+    {
+        id: 7,
+        name: "Miles Thompson",
+        message: "I got you bro 💪🏽😎",
+        time: "6:10 PM",
+        status: 'delivered',
+    },
+    {
+        id: 8,
+        name: "Amanda James",
+        message: "cant wait for tomorrow ☺️😍😍",
+        time: "5:15 AM",
+        status: 'sent',
+    },
+    {
+        id: 9,
+        name: "Weekend Plan",
+        message: "lets meet up",
+        time: "11:10 AM",
+        status: 'seen',
+    },
+    {
+        id: 10,
+        name: "Grace Teresa",
+        message: "can you call?? 😕",
+        time: "3:20 PM",
+        status: 'failed',
+    }
+];
