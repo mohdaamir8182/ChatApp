@@ -11,6 +11,7 @@ import { CALL_ICON, CAMERA_ICON, CHATS_ICON, SETTINGS_ICON, STATUS_ICON } from '
 import BottomIcon from './src/components/BottomIcon';
 import { activeTintColor, inActiveTintColor, tabBgColor } from './src/Constants/colors';
 import OnetoOneChat from './src/screens/bottomTabs/OnetoOneChat';
+import Login from './src/screens/stack/Login';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -22,6 +23,16 @@ function MainStack() {
     >
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="OnetoOneChat" component={OnetoOneChat} />
+    </Stack.Navigator>
+  );
+}
+
+function LoginStack() {
+  return (
+    <Stack.Navigator
+     headerMode = "none"
+    >
+      <Stack.Screen name="Home" component={Login} />
     </Stack.Navigator>
   );
 }
@@ -125,4 +136,4 @@ function CallsStack() {
       )
   }
 
-  export { MainStack , BottomTabsNavigator};
+  export { MainStack ,LoginStack, BottomTabsNavigator};

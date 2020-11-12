@@ -19,7 +19,7 @@ const Chats = () => {
     return (
         <ScrollView 
             contentContainerStyle={StyleSheet.container}
-            showsVerticalScrollIndicator='false'
+            showsVerticalScrollIndicator={false}
         >
 
             <SearchHeader />
