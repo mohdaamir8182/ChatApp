@@ -2,6 +2,8 @@ import React from 'react';
 import firebase from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin,statusCodes,} from '@react-native-community/google-signin';
+import {hitSignIn} from '../redux/Actions'
+
 
   const googleSignInWithFirebase = async () => {
       try {

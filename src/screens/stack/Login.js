@@ -4,24 +4,54 @@ import {Context as AuthContext} from '../../context/AuthContext';
 import {GoogleSignin,statusCodes,} from '@react-native-community/google-signin';
 import auth from '@react-native-firebase/auth';
 import { WEB_CLIENT_ID } from '../../Constants/secret';
-import { googleSignInWithFirebase, googleSignOut } from '../../context/Methods';
+import {googleSignOut } from '../../context/Methods';
+import {useDispatch} from 'react-redux';
+import {hitSignIn} from '../../redux/Actions'
 
 const Login = () => {
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
         GoogleSignin.configure({
-          scopes: ['email'], // what API you want to access on behalf of the user, default is email and profile
+          scopes: ['profile'], // what API you want to access on behalf of the user, default is email and profile
           webClientId:WEB_CLIENT_ID, // client ID of type WEB for your server (needed to verify user ID and offline access)
           offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
         });
       }, []);
+
+      const googleSignInWithFirebase = async () => {
+        try {
+          await GoogleSignin.hasPlayServices();
+          const {accessToken, idToken} = await GoogleSignin.signIn();
+          console.log("INFO.....",idToken)
+          const googleCredential = auth.GoogleAuthProvider.credential(
+            idToken,
+            accessToken,
+          );
+        
+          // Sign-in the user with the credential
+         return await auth().signInWithCredential(googleCredential);
+  
+        } catch (error) {
+          if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+            // user cancelled the login flow
+          } else if (error.code === statusCodes.IN_PROGRESS) {
+            // operation (e.g. sign in) is in progress already
+          } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+            // play services not available or outdated
+          } else {
+            console.error(error)
+          }
+        }
+      };
     
     return (
 
         <View style={styles.container}>
         <TouchableOpacity 
             style={styles.btn}
-            onPress={() => googleSignInWithFirebase()}
+            onPress={() => googleSignInWithFirebase().then(() => dispatch(hitSignIn("Amir")))}
         >
             <Text>LOGIN WITH GOOGLE</Text>
         </TouchableOpacity>
